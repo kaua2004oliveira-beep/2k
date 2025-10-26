@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2k Design - Design de Interiores</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <h1>2k Design</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#suporte">Suporte</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="hero">
+    <div class="hero-content">
+        <h2 class="animate-slide-in">Transforme seu espaço com elegância</h2>
+        <p>Design de interiores personalizado para residências e escritórios.</p>
+        <a href="#contato" class="btn">Entre em Contato</a>
+    </div>
+</section>
+
+<section id="servicos" class="fade-in">
+    <h2>Nossos Serviços</h2>
+    <div class="servicos-grid">
+        <div class="servico animate-fade-in-delay">
+            <h3>Planejamento de Espaços</h3>
+            <p>Projetamos layouts funcionais e estéticos.</p>
+        </div>
+        <div class="servico animate-fade-in-delay">
+            <h3>Decoração</h3>
+            <p>Escolhemos móveis e acessórios que combinam com seu estilo.</p>
+        </div>
+        <div class="servico animate-fade-in-delay">
+            <h3>Consultoria</h3>
+            <p>Orientação profissional para reformas e ambientações.</p>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" class="fade-in">
+    <h2>Portfólio</h2>
+    <div class="portfolio-grid">
+        <img src="https://via.placeholder.com/300x200/ffffff/800020?text=Projeto+1" alt="Projeto 1" class="animate-fade-in-delay">
+        <img src="https://via.placeholder.com/300x200/ffffff/800020?text=Projeto+2" alt="Projeto 2" class="animate-fade-in-delay">
+        <img src="https://via.placeholder.com/300x200/ffffff/800020?text=Projeto+3" alt="Projeto 3" class="animate-fade-in-delay">
+    </div>
+</section>
+
+<section id="contato" class="fade-in">
+    <h2>Entre em Contato</h2>
+    <form>
+        <input type="text" placeholder="Nome" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Mensagem"></textarea>
+        <button type="submit" class="btn">Enviar</button>
+    </form>
+</section>
+
+<section id="suporte" class="fade-in">
+    <h2>Suporte e Canais de Atendimento</h2>
+    <div class="suporte-grid">
+        <div class="suporte-item animate-fade-in-delay">
+            <h3>Email</h3>
+            <p>Envie suas dúvidas para <a href="mailto:suporte@2kdesign.com">suporte@2kdesign.com</a></p>
+        </div>
+        <div class="suporte-item animate-fade-in-delay">
+            <h3>WhatsApp</h3>
+            <p>Fale conosco diretamente: <a href="https://wa.me/5511999999999" target="_blank">+55 11 99999-9999</a></p>
+        </div>
+        <div class="suporte-item animate-fade-in-delay">
+            <h3>Telefone</h3>
+            <p>Ligue para: (11) 99999-9999</p>
+        </div>
+        <div class="suporte-item animate-fade-in-delay">
+            <h3>Chat Online</h3>
+            <p>Inicie um chat ao vivo no nosso site.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2023 2k Design. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    // Animação de slide-in para o título do hero ao carregar
+    document.addEventListener('DOMContentLoaded', () => {
+        const heroTitle = document.querySelector('.animate-slide-in');
+        heroTitle.style.animation = 'slideIn 1s ease-out';
+    });
+
+    // Animações de fade-in escalonadas para itens do grid ao carregar
+    const fadeInElements = document.querySelectorAll('.animate-fade-in-delay');
+    fadeInElements.forEach((el, index) => {
+        setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, index * 200); // Delay escalonado de 200ms
+    });
+
+    // Intersection Observer para fade-in ao rolar
+    const observerOptions = {
+        threshold: 0.1, // Ativa quando 10% da seção estiver visível
+        rootMargin: '0px 0px -50px 0px' // Ajuste para ativar um pouco antes
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, observerOptions);
+
+    // Observar todas as seções com fade-in
+    const sections = document.querySelectorAll('.fade-in');
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+</script>
+</body>
+</html>
